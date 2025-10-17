@@ -1,0 +1,42 @@
+.task_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;          
+  background-color: rgba(0, 0, 0, 0.2); 
+  padding: 8px 12px;
+  margin: 10px;
+  border-radius: 5px;
+ 
+}
+
+.span_item {
+  color: black;
+  font-size: 16px;
+  flex: 1; 
+}
+#groupBtn {
+  display: flex;
+  gap: 6px;
+}
+
+.icon1{
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+.icon2,.icon3{
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+.icon1:h,.icon3:hover {
+  transform: scale(1.2);
+}
+
+.icon2:hover {
+  transform: scale(1.2);
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="todolist.css">
+    <style>
+        body {
+            box-sizing: border-box;
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .contai {
+            background-color: white;
+            width: 400px;
+            min-height: 230px;
+            border: none;
+            border-radius: 20px;
+
+
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        input {
+            flex: 0.9;
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        #btn1 {
+            margin: 10px;
+            background-color: rgb(55, 55, 241);
+            color: white;
+            font-weight: 600;
+            font-family: Arial, Helvetica, sans-serif;
+            border: 0;
+            border-radius: 8px;
+            width: 70px;
+            cursor: pointer;
+        }
+
+        #btn1:hover {
+            transform: scale(0.9);
+            background-color: rgb(87, 87, 245);
+            /* overflow: hidden; */
+        }
+
+        .done {
+            opacity: 0.7;
+            text-decoration: line-through;
+            color: black;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="contai">
+        <h2>📝 Todo-List</h2>
+        <div class="main">
+            <input type="text" id="input" placeholder="Nhập công việc">
+            <button id="btn1" class="btn">Thêm</button>
+        </div>
+        <div class="classlist" id="tasklist">
+
+        </div>
+    </div>
+    <script>
+        const input = document.getElementById('input')
+        const btn = document.getElementById('btn1')
+        const tasklist = document.getElementById('tasklist')
+
+        btn.addEventListener('click', () => {
+            const text = input.value.trim();
+            if (text === '') {
+                alert('Vui lòng nhập vào công việc')
+                return
+            }
+            const item = document.createElement('div')
+            item.className = 'task_item'
+
+            const span = document.createElement('span')
+            span.className = 'span_item'
+            span.textContent = text
+
+            const groupBtn = document.createElement('div')
+            groupBtn.id = 'groupBtn'
+
+            const icon1 = document.createElement('button');
+            icon1.textContent = '🗑️';
+            icon1.className = 'icon1'
+            groupBtn.appendChild(icon1)
+
+            const icon3 = document.createElement('button')
+            icon3.className = 'icon3'
+            icon3.textContent = '✏️'
+            groupBtn.appendChild(icon3)
+
+            const icon2 = document.createElement('button')
+            icon2.innerText = '✅'
+            icon2.className = 'icon2'
+            groupBtn.appendChild(icon2)
+            
+
+                
+             item.appendChild(span)
+            item.appendChild(groupBtn)
+           
+
+            tasklist.appendChild(item)
+
+            icon2.addEventListener('click', () => {
+                span.classList.toggle('done')
+            })
+            icon1.addEventListener('click', () => {
+                item.remove()
+            })
+            icon3.addEventListener('click',()=>{
+                const newText = prompt('Nhập vào nội dung mới: '+span.textContent)
+                if(newText ===''){
+                    alert('vui lòng nhập lại')
+                    return
+                }
+                span.textContent = newText.trim()
+            })
+       input.value = '';
+  input.focus();
+
+        })  
+        
+
+
+        
+    </script>
+    <style>
+
+
+    </style>
+</body>
+
+</html>
+
+
+<!-- <div class="classlist" id="tasklist">
+  <div id="tasklist" class="classlist">
+
+  <div class="task_item">
+
+    <span class="span_item">Làm bài tập</span>
+
+   
+    <div id="groupBtn">
+      <button class="icon1">🗑️</button>   
+      <button class="icon2">✅</button>   
+    </div>
+  </div>
+
+</div>
+
+</div> -->
